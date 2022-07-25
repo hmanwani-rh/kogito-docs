@@ -155,8 +155,11 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Testing and Troubleshooting</span>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="mocking-opnapi-services-with-wiremock.html">Mocking OpenAPI services using WireMock</a>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mocking-http-cloudevents-with-wiremock.html">Mocking HTTP CloudEvents sink with WireMock</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#testing-and-troubleshooting/mocking-opnapi-services-with-wiremock.adoc">Mocking OpenAPI services using WireMock</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="basic-integration-tests-with-restassured.html">Testing your Serverless Workflow application using REST Assured</a>
@@ -224,11 +227,10 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Kogito Serverless Workflow Guides</a></li>
-    <li>Testing and Troubleshooting</li>
-    <li><a href="mocking-opnapi-services-with-wiremock.html">Mocking OpenAPI services using WireMock</a></li>
+    <li><a href="mocking-openapi-services-with-wiremock.html">Mocking OpenAPI services using WireMock</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/kiegroup/kogito-docs/edit/main/serverlessworkflow/modules/ROOT/pages/testing-and-troubleshooting/mocking-opnapi-services-with-wiremock.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/kiegroup/kogito-docs/edit/main/serverlessworkflow/modules/ROOT/pages/testing-and-troubleshooting/mocking-openapi-services-with-wiremock.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -256,7 +258,7 @@
 <li>
 <p>A Serverless Workflow project is created and orchestrates OpenAPI services.</p>
 <div class="paragraph">
-<p>For more information about creating a Serverless Workflow project and orchestrating OpenAPI services, see <a href="xref:getting-started/create-your-first-workflow-service.adoc">Creating your first Serverless Workflow service</a> and <a href="xref:service-orchestration/orchestration-of-openapi-based-services.adoc">Orchestrating the OpenAPI services</a>.</p>
+<p>For more information about orchestrating OpenAPI services, see <a href="xref:service-orchestration/orchestration-of-openapi-based-services.adoc">Orchestrating the OpenAPI services</a>.</p>
 </div>
 </li>
 </ul>
@@ -275,7 +277,7 @@
 <li>
 <p>A Serverless Workflow project is created.</p>
 <div class="paragraph">
-<p>For more information about creating a workflow project, see <a href="xref:getting-started/create-your-first-workflow-service.adoc">Creating your first Serverless Workflow service</a>.</p>
+<p>For more information about creating a workflow project, see <a href="../getting-started/create-your-first-workflow-service.html" class="xref page">Creating your first Serverless Workflow service</a>.</p>
 </div>
 </li>
 </ul>
@@ -443,7 +445,7 @@ wireMockServer.stubFor(WireMock.get(WireMock.urlEqualTo("/rest/v2/name/Greece"))
 <li>
 <p>A Serverless Workflow project is created.</p>
 <div class="paragraph">
-<p>For more information about creating a workflow project, see <a href="xref:getting-started/create-your-first-workflow-service.adoc">Creating your first Serverless Workflow service</a>.</p>
+<p>For more information about creating a workflow project, see <a href="../getting-started/create-your-first-workflow-service.html" class="xref page">Creating your first Serverless Workflow service</a>.</p>
 </div>
 </li>
 <li>
@@ -583,7 +585,7 @@ class CountryServiceWorkflowTest {
 <li>
 <p>A Serverless Workflow project is created.</p>
 <div class="paragraph">
-<p>For more information about creating a workflow project, see <a href="xref:getting-started/create-your-first-workflow-service.adoc">Creating your first Serverless Workflow service</a>.</p>
+<p>For more information about creating a workflow project, see <a href="../getting-started/create-your-first-workflow-service.html" class="xref page">Creating your first Serverless Workflow service</a>.</p>
 </div>
 </li>
 <li>
