@@ -167,13 +167,22 @@
     <a class="nav-link" href="../testing-and-troubleshooting/mocking-http-cloudevents-with-wiremock.html">Mocking HTTP CloudEvents sink using WireMock</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#testing-and-troubleshooting/mocking-opnapi-services-with-wiremock.adoc">Mocking OpenAPI services using WireMock</a>
+    <a class="nav-link" href="../testing-and-troubleshooting/mocking-openapi-services-with-wiremock.html">Mocking OpenAPI services using WireMock</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../testing-and-troubleshooting/basic-integration-tests-with-restassured.html">Testing your Serverless Workflow application using REST Assured</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../testing-and-troubleshooting/integration-tests-with-postgresql.html">Integration Test with PostgreSQL</a>
+    <a class="nav-link" href="../testing-and-troubleshooting/integration-tests-with-postgresql.html">Serverless Workflow integration test using PostgreSQL</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Persistence</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../persistence/persistence-with-postgresql.html">Running Serverless Workflow service using PostgresSQL</a>
   </li>
 </ul>
   </li>
@@ -357,7 +366,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>In the previous example, the left number is equal to the <code>fahrenheit</code> property (an input number that invokes the workflow), and the right number is equal to the <code>substractvalue</code> property (a constant number that is injected to the workflow model by <code>SetConstants</code> state). Once the expression evaluation is resolved for all properties that contain an expression, the resulting object is passed in the OpenAPI request. Based on the OpenAPI definition, the properties in the JSON object are used as body, path, query, or header of the upcoming REST invocation.</p>
+<p>In the previous example, the left number is equal to the <code>fahrenheit</code> property (an input number that invokes the workflow), and the right number is equal to the <code>subtractValue</code> property (a constant number that is injected to the workflow model by <code>SetConstants</code> state). Once the expression evaluation is resolved for all properties that contain an expression, the resulting object is passed in the OpenAPI request. Based on the OpenAPI definition, the properties in the JSON object are used as body, path, query, or header of the upcoming REST invocation.</p>
 </div>
 <div class="paragraph">
 <p>Following is an example of function arguments defined as string that contains an expression, returning a JSON object:</p>
