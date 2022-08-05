@@ -73,7 +73,7 @@
     <a class="nav-link" href="../getting-started/cncf-serverless-workflow-specification-support.html">CNCF Serverless Workflow specification</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../getting-started/getting-familiar-with-our-tooling.html">Getting familiar with our tooling</a>
+    <a class="nav-link" href="../getting-started/getting-familiar-with-our-tooling.html">Getting familiar with Serverless Workflow tooling</a>
   </li>
 </ul>
   </li>
@@ -148,7 +148,7 @@
     <span class="nav-text">Eventing</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../eventing/handling-events-on-workflows.html">Handling events on workflows</a>
+    <a class="nav-link" href="../eventing/handling-events-on-workflows.html">Event state in Serverless Workflow</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../eventing/consume-producing-events-with-kafka.html">Consuming and producing events using Apache Kafka</a>
@@ -157,7 +157,7 @@
     <a class="nav-link" href="../eventing/consume-produce-events-with-knative-eventing.html">Consuming and producing events on Knative Eventing</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../eventing/working-with-callbacks.html">Callbacks in Serverless Workflow</a>
+    <a class="nav-link" href="../eventing/working-with-callbacks.html">Callback state in Serverless Workflow</a>
   </li>
 </ul>
   </li>
@@ -247,6 +247,12 @@
         <li class="version is-current is-latest">
           <a href="../index.html">main</a>
         </li>
+        <li class="version">
+          <a href="../../1.25.0.Final/index.html">1.25.0.Final</a>
+        </li>
+        <li class="version">
+          <a href="../../1.24.1.Final/index.html">1.24.1.Final</a>
+        </li>
       </ul>
     </li>
   </ul>
@@ -265,6 +271,14 @@
     <li><a href="deploying-on-minikube.html">Deploying your Serverless Workflow application on Minikube</a></li>
   </ul>
 </nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">main</button>
+  <div class="version-menu">
+    <a class="version is-current" href="deploying-on-minikube.html">main</a>
+    <a class="version" href="../../1.25.0.Final/cloud/deploying-on-minikube.html">1.25.0.Final</a>
+    <a class="version" href="../../1.24.1.Final/cloud/deploying-on-minikube.html">1.24.1.Final</a>
+  </div>
+</div>
   <div class="edit-this-page"><a href="https://github.com/kiegroup/kogito-docs/edit/main/serverlessworkflow/modules/ROOT/pages/cloud/deploying-on-minikube.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
@@ -767,7 +781,7 @@ http://hello.serverless-workflow-greeting-quarkus.10.103.94.37.sslip.io</code></
 <div class="tab-pane" aria-labelledby="tabset1_gradle">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">quarkus-kubernetes 'io.quarkus:quarkus-kubernetes:2.10.2.Final'
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">quarkus-kubernetes 'io.quarkus:quarkus-kubernetes:2.11.1.Final'
 quarkus-kubernetes 'org.kie.kogito:kogito-addons-quarkus-knative-eventing:main'</code></pre>
 </div>
 </div>
