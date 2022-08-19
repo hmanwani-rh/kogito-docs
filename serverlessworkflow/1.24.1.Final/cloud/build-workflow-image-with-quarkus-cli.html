@@ -157,6 +157,9 @@
     <a class="nav-link" href="../eventing/consume-produce-events-with-knative-eventing.html">Consuming and producing events on Knative Eventing</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../eventing/event-correlation-with-workflows.html">Event correlation in Serverless Workflow</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../eventing/working-with-callbacks.html">Callback state in Serverless Workflow</a>
   </li>
 </ul>
@@ -238,20 +241,23 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">Kogito Serverless Workflow Guides</span>
-    <span class="version">1.24.1.Final</span>
+    <span class="version">1.24</span>
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../../main/index.html">Kogito Serverless Workflow Guides</a>
+      <a class="title" href="../../latest/index.html">Kogito Serverless Workflow Guides</a>
       <ul class="versions">
-        <li class="version is-latest">
-          <a href="../../main/index.html">main</a>
+        <li class="version">
+          <a href="../../main/index.html">snapshot</a>
         </li>
         <li class="version">
-          <a href="../../1.25.0.Final/index.html">1.25.0.Final</a>
+          <a href="../../1.26.0-SNAPSHOT/index.html">1.26-RC</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../latest/index.html">1.25</a>
         </li>
         <li class="version is-current">
-          <a href="../index.html">1.24.1.Final</a>
+          <a href="../index.html">1.24</a>
         </li>
       </ul>
     </li>
@@ -263,7 +269,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../main/index.html" class="home-link"></a>
+  <a href="../../latest/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Kogito Serverless Workflow Guides</a></li>
@@ -272,11 +278,12 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">1.24.1.Final</button>
+  <button class="version-menu-toggle" title="Show other versions of page">1.24</button>
   <div class="version-menu">
-    <a class="version" href="../../main/cloud/build-workflow-image-with-quarkus-cli.html">main</a>
-    <a class="version" href="../../1.25.0.Final/cloud/build-workflow-image-with-quarkus-cli.html">1.25.0.Final</a>
-    <a class="version is-current" href="build-workflow-image-with-quarkus-cli.html">1.24.1.Final</a>
+    <a class="version" href="../../main/cloud/build-workflow-image-with-quarkus-cli.html">snapshot</a>
+    <a class="version" href="../../1.26.0-SNAPSHOT/cloud/build-workflow-image-with-quarkus-cli.html">1.26-RC</a>
+    <a class="version" href="../../latest/cloud/build-workflow-image-with-quarkus-cli.html">1.25</a>
+    <a class="version is-current" href="build-workflow-image-with-quarkus-cli.html">1.24</a>
   </div>
 </div>
   <div class="edit-this-page"><a href="https://github.com/kiegroup/kogito-docs/edit/1.24.x/serverlessworkflow/modules/ROOT/pages/cloud/build-workflow-image-with-quarkus-cli.adoc">Edit this Page</a></div>
@@ -321,15 +328,7 @@
 <h2 id="proc-using-example-application"><a class="anchor" href="#proc-using-example-application"></a>Using an example application</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To get started with building workflow images, you can use the <a href="https://github.com/kiegroup/kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-greeting-quarkus"><code>serverless-workflow-greeting-quarkus</code></a> example application.</p>
-</div>
-<div class="ulist">
-<div class="title">Prerequisites</div>
-<ul>
-<li>
-<p>Quarkus 2.10.2.Final is installed.</p>
-</li>
-</ul>
+<p>To get started with building workflow images, you can use the <a href="https://github.com/kiegroup/kogito-examples/tree/1.24.x/serverless-workflow-examples/serverless-workflow-greeting-quarkus"><code>serverless-workflow-greeting-quarkus</code></a> example application.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -338,7 +337,7 @@
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-You can skip the following procedure, if you already have a workflow application.
+You can skip the following procedure if you already have a workflow application.
 </td>
 </tr>
 </table>
@@ -347,11 +346,12 @@ You can skip the following procedure, if you already have a workflow application
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Clone the <a href="https://github.com/kiegroup/kogito-examples.git">kogito-examples</a> repository and navigate to the <a href="https://github.com/kiegroup/kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-greeting-quarkus"><code>serverless-workflow-greeting-quarkus</code></a> example application.</p>
+<p>Clone the <a href="https://github.com/kiegroup/kogito-examples.git">kogito-examples</a> repository and navigate to the <a href="https://github.com/kiegroup/kogito-examples/tree/1.24.x/serverless-workflow-examples/serverless-workflow-greeting-quarkus"><code>serverless-workflow-greeting-quarkus</code></a> example application.</p>
 <div class="listingblock">
 <div class="title">Clone an example application</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git clone --branch main https://github.com/kiegroup/kogito-examples.git &amp;&amp; cd kogito-examples/serverless-workflow-examples/serverless-workflow-greeting-quarkus</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git clone --branch main https://github.com/kiegroup/kogito-examples.git
+cd kogito-examples/serverless-workflow-examples/serverless-workflow-greeting-quarkus</code></pre>
 </div>
 </div>
 </li>
@@ -372,7 +372,7 @@ You can skip the following procedure, if you already have a workflow application
 </div>
 </div>
 <div class="paragraph">
-<p>After adding the Jib extension, if you see the <code>pom.xml</code> file, you can verify the newly added dependency:</p>
+<p>After adding the Jib extension, you can verify the newly added dependency in the <code>pom.xml</code> file:</p>
 </div>
 <div class="listingblock">
 <div class="title">Verify the Jib extension</div>
@@ -403,7 +403,8 @@ You can skip the following procedure, if you already have a workflow application
 <p>You have created a Quarkus project.</p>
 </li>
 <li>
-<p>Quarkus CLI is installed. For more information about installing the Quarkus CLI, see <a href="https://quarkus.io/guides/cli-tooling#installing-the-cli">Installing the Quarkus CLI</a>.</p>
+<p>Quarkus CLI is installed.
+For more information about installing the Quarkus CLI, see <a href="https://quarkus.io/guides/cli-tooling#installing-the-cli">Installing the Quarkus CLI</a>.</p>
 </li>
 </ul>
 </div>
@@ -414,11 +415,36 @@ You can skip the following procedure, if you already have a workflow application
 <p>In a command terminal, navigate to your Quarkus project.</p>
 </li>
 <li>
-<p>To build your workflow application on Quarkus, run the following command:</p>
+<p>To build your workflow application on Quarkus, set the <code>quarkus.container-image.build</code> property value to <code>true</code> and run the following command:</p>
 <div class="openblock">
 <div class="content">
 <div class="listingblock">
 <div class="title">Build your workflow application</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">quarkus build -Dquarkus.container-image.build=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The previous command builds your image with name: <code>{system_username}/{project_artifactId}:{project_version}</code>.</p>
+</div>
+<div class="paragraph">
+<p>Optionally, you can set the following properties to specify the image:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>quarkus.container-image.registry</code>: To define the registry address of the image, such as <code>quay.io</code>.</p>
+</li>
+<li>
+<p><code>quarkus.container-image.group</code>: To define the registry namespace of the image. For example, <code>context/namespace</code> or in case of Kubernetes or OpenShift <code>namespace/project</code>.</p>
+</li>
+<li>
+<p><code>quarkus.container-image.name</code>: To override the image name. By default, this property uses artifact ID.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Build your workflow application with specific image information</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">quarkus build -Dquarkus.container-image.build=true \
     -Dquarkus.container-image.group=kogito \
@@ -427,33 +453,25 @@ You can skip the following procedure, if you already have a workflow application
     -Dquarkus.container-image.registry=quay.io</code></pre>
 </div>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The added Jib extension caches the <code>target/lib</code> directory. Based on the size of your project, Jib speeds up the rebuilds. If you want to push your workflow application to a registry, ensure that you define the following properties as required:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>quarkus.container-image.registry</code>: To define the registry address, such as <code>quay.io</code>.</p>
-</li>
-<li>
-<p><code>quarkus.container-image.group</code>: To define the registry. For example, <code>context/namespace</code> or in case of Kubernetes or OpenShift <code>namespace/project</code>.</p>
-</li>
-<li>
-<p><code>quarkus.container-image.push</code>: To define whether or not to push an image. Set the value of this property to <code>true</code>. By default, this property is set as <code>false</code>.</p>
-</li>
-</ul>
+<p>The added Jib extension caches the <code>target/lib</code> directory. Based on the size of your project, Jib speeds up the rebuilds.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
+</div>
+</div>
+</li>
+<li>
+<p>You can also push your workflow application to the defined registry. You need to set the <code>quarkus.container-image.push</code> property value to <code>true</code> (default value is <code>false</code>).</p>
 <div class="listingblock">
 <div class="title">Example of pushing the built workflow application to a registry</div>
 <div class="content">
@@ -466,12 +484,10 @@ You can skip the following procedure, if you already have a workflow application
 </div>
 </div>
 <div class="paragraph">
-<p>The previous command results in the following container image:</p>
+<p>The previous command results in the following container image pushed to <code>quay.io</code>:</p>
 </div>
 <div class="paragraph">
 <p><code>quay.io/kogito/serverless-workflow-greeting-quarkus:1.0</code></p>
-</div>
-</div>
 </div>
 </li>
 <li>
@@ -520,7 +536,8 @@ You can skip the following procedure, if you already have a workflow application
 <p>You have created a Quarkus project.</p>
 </li>
 <li>
-<p>Quarkus CLI is installed. For more information about installing the Quarkus CLI, see <a href="https://quarkus.io/guides/cli-tooling">Installing the Quarkus CLI</a>.</p>
+<p>Quarkus CLI is installed.
+For more information about installing the Quarkus CLI, see <a href="https://quarkus.io/guides/cli-tooling">Installing the Quarkus CLI</a>.</p>
 </li>
 </ul>
 </div>
@@ -558,7 +575,7 @@ You can skip the following procedure, if you already have a workflow application
 </td>
 <td class="content">
 <div class="paragraph">
-<p>In case GraalVM is not installed, you can set the <code>quarkus.native.container-build=true</code> system property, which creates a Linux executable.</p>
+<p>In case GraalVM is not installed, you can set the <code>-Dquarkus.native.container-build=true</code> system property, which creates a Linux executable.</p>
 </div>
 </td>
 </tr>
@@ -574,25 +591,6 @@ You can skip the following procedure, if you already have a workflow application
 <div class="title">Configure Docker to use the in-cluster (Remote) Docker daemon</div>
 <div class="paragraph">
 <p>When build Container Images using a remote Docker Daemon, i.e. Minikube, you need to use the following system property instead of <code>-Dquarkus.native.container-build=true</code></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">-Dquarkus.native.remote-container-build=true</code></pre>
-</div>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>When you build Container Images using a remote Docker Daemon, such as Minikube, then use the following system property instead of <code>-Dquarkus.native.container-build=true</code> property:</p>
 </div>
 <div class="listingblock">
 <div class="title">System property to use a remote Docker Daemon</div>

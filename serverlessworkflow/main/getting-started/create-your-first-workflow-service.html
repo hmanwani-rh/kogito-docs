@@ -92,6 +92,9 @@
     <a class="nav-link" href="../core/configuration-properties.html">Configuration properties in Serverless Workflow</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../core/defining-an-input-schema-for-workflows.html">Defining an input schema for Serverless Workflow</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../core/custom-functions-support.html">Custom functions for your Serverless Workflow service</a>
   </li>
 </ul>
@@ -239,20 +242,23 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">Kogito Serverless Workflow Guides</span>
-    <span class="version">main</span>
+    <span class="version">snapshot</span>
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../index.html">Kogito Serverless Workflow Guides</a>
+      <a class="title" href="../../latest/index.html">Kogito Serverless Workflow Guides</a>
       <ul class="versions">
-        <li class="version is-current is-latest">
-          <a href="../index.html">main</a>
+        <li class="version is-current">
+          <a href="../index.html">snapshot</a>
         </li>
         <li class="version">
-          <a href="../../1.25.0.Final/index.html">1.25.0.Final</a>
+          <a href="../../1.26.0-SNAPSHOT/index.html">1.26-RC</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../latest/index.html">1.25</a>
         </li>
         <li class="version">
-          <a href="../../1.24.1.Final/index.html">1.24.1.Final</a>
+          <a href="../../1.24.1.Final/index.html">1.24</a>
         </li>
       </ul>
     </li>
@@ -264,7 +270,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../index.html" class="home-link"></a>
+  <a href="../../latest/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Kogito Serverless Workflow Guides</a></li>
@@ -273,11 +279,12 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">main</button>
+  <button class="version-menu-toggle" title="Show other versions of page">snapshot</button>
   <div class="version-menu">
-    <a class="version is-current" href="create-your-first-workflow-service.html">main</a>
-    <a class="version" href="../../1.25.0.Final/getting-started/create-your-first-workflow-service.html">1.25.0.Final</a>
-    <a class="version" href="../../1.24.1.Final/getting-started/create-your-first-workflow-service.html">1.24.1.Final</a>
+    <a class="version is-current" href="create-your-first-workflow-service.html">snapshot</a>
+    <a class="version" href="../../1.26.0-SNAPSHOT/getting-started/create-your-first-workflow-service.html">1.26-RC</a>
+    <a class="version" href="../../latest/getting-started/create-your-first-workflow-service.html">1.25</a>
+    <a class="version" href="../../1.24.1.Final/getting-started/create-your-first-workflow-service.html">1.24</a>
   </div>
 </div>
   <div class="edit-this-page"><a href="https://github.com/kiegroup/kogito-docs/edit/main/serverlessworkflow/modules/ROOT/pages/getting-started/create-your-first-workflow-service.adoc">Edit this Page</a></div>
@@ -341,7 +348,7 @@
 <p>Apache Maven 3.8.6 is installed.</p>
 </li>
 <li>
-<p><a href="https://quarkus.io/guides/cli-tooling">Quarkus CLI</a> 2.11.2.Final or <a href="../tooling/kn-plugin-workflow-overview.html" class="xref page">Knative CLI</a> 0.0.0 is installed.</p>
+<p><a href="https://quarkus.io/guides/cli-tooling">Quarkus CLI</a> or <a href="../tooling/kn-plugin-workflow-overview.html" class="xref page">Knative Workflow CLI</a> 0.21.3 is installed.</p>
 </li>
 <li>
 <p>Visual Studio Code with <a href="https://marketplace.visualstudio.com/items?itemName=redhat.java">Red Hat Java Extension</a>
@@ -375,7 +382,7 @@ and <a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-e
 <p><a id="tabset1_apache-maven"></a>Apache Maven</p>
 </li>
 <li>
-<p><a id="tabset1_knative-cli"></a>Knative CLI</p>
+<p><a id="tabset1_knative-workflow-cli"></a>Knative workflow CLI</p>
 </li>
 </ul>
 </div>
@@ -389,7 +396,7 @@ and <a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-e
     -x=quarkus-container-image-jib \
     -x=quarkus-resteasy-jackson \
     -x=quarkus-smallrye-openapi \
-    --no-code  \
+    --no-code \
     org.kie.kogito.examples:serverless-workflow-hello-world:1.0</code></pre>
 </div>
 </div>
@@ -435,62 +442,19 @@ cd serverless-workflow-hello-world</code></pre>
 <p>In the previous command, <code>org.kie.kogito.examples</code>, <code>serverless-workflow-hello-world</code>, and <code>1.0</code> is group ID, artifact ID, and version of your project respectively. <code>-DnoCode</code> prevents the generation of workflow example code.</p>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset1_knative-cli">
+<div class="tab-pane" aria-labelledby="tabset1_knative-workflow-cli">
 <div class="listingblock">
-<div class="title">Create a project using Knative CLI</div>
+<div class="title">Create a project using Knative workflow CLI</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">kn workflow create --name my-project --extension quarkus-jsonp,quarkus-smallrye-openapi</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">kn workflow create \
+  --name serverless-workflow-hello-world \
+  --extension quarkus-jsonp,quarkus-smallrye-openapi \
+  --quarkus-platform-group-id=io.quarkus.platform \
+  --quarkus-version=2.11.2.Final</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For more information about Knative CLI, see <a href="../tooling/kn-plugin-workflow-overview.html" class="xref page">Serverless Workflow plug-in for Knative CLI</a>.</p>
-</div>
-</div>
-</div>
-</div>
-</li>
-<li>
-<p>To verify that project is created, compile the project using the following command:</p>
-<div class="tabset is-loading">
-<div class="ulist tabs">
-<ul>
-<li>
-<p><a id="tabset2_quarkus-cli"></a>Quarkus CLI</p>
-</li>
-<li>
-<p><a id="tabset2_apache-maven"></a>Apache Maven</p>
-</li>
-<li>
-<p><a id="tabset2_knative-cli"></a>Knative CLI</p>
-</li>
-</ul>
-</div>
-<div class="content">
-<div class="tab-pane" aria-labelledby="tabset2_quarkus-cli">
-<div class="listingblock">
-<div class="title">Compile your project using Quarkus CLI</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">quarkus build</code></pre>
-</div>
-</div>
-</div>
-<div class="tab-pane" aria-labelledby="tabset2_apache-maven">
-<div class="listingblock">
-<div class="title">Compile your project using Apache Maven</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn clean package</code></pre>
-</div>
-</div>
-</div>
-<div class="tab-pane" aria-labelledby="tabset2_knative-cli">
-<div class="listingblock">
-<div class="title">Build your project and generate a local image called <code>quay.io/other-user/my-project:1.0.1</code></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">kn workflow build --image my-user/my-project:1.0.0 --image-repository other-user --image-tag 1.0.1</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>For more information about Knative CLI, see <a href="../tooling/kn-plugin-workflow-overview.html" class="xref page">Serverless Workflow plug-in for Knative CLI</a>.</p>
+<p>For more information about Knative workflow CLI, see <a href="../tooling/kn-plugin-workflow-overview.html" class="xref page">Serverless Workflow plug-in for Knative CLI</a>.</p>
 </div>
 </div>
 </div>
@@ -615,6 +579,65 @@ cd serverless-workflow-hello-world</code></pre>
 </div>
 </div>
 <div class="sect1">
+<h2 id="proc-building-application"><a class="anchor" href="#proc-building-application"></a>Building your workflow application</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>To verify that project is created, compile the project using the following command:</p>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset2_quarkus-cli"></a>Quarkus CLI</p>
+</li>
+<li>
+<p><a id="tabset2_apache-maven"></a>Apache Maven</p>
+</li>
+<li>
+<p><a id="tabset2_knative-workflow-cli"></a>Knative workflow CLI</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_quarkus-cli">
+<div class="listingblock">
+<div class="title">Compile your project using Quarkus CLI</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">quarkus build</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_apache-maven">
+<div class="listingblock">
+<div class="title">Compile your project using Apache Maven</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn clean package</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_knative-workflow-cli">
+<div class="listingblock">
+<div class="title">Build your project and generate a local image called <code>dev.local/serverless-workflow-hello-world:latest</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">kn workflow build --image dev.local/serverless-workflow-hello-world --verbose</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>--verbose</code> flag is used to display the output of the build command. This flag is optional.</p>
+</div>
+<div class="paragraph">
+<p>For more information about Knative workflow CLI, see <a href="../tooling/kn-plugin-workflow-overview.html" class="xref page">Serverless Workflow plug-in for Knative CLI</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="proc-running-application"><a class="anchor" href="#proc-running-application"></a>Running your workflow application</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -634,9 +657,6 @@ cd serverless-workflow-hello-world</code></pre>
 <li>
 <p><a id="tabset3_apache-maven"></a>Apache Maven</p>
 </li>
-<li>
-<p><a id="tabset3_knative-cli"></a>Knative CLI</p>
-</li>
 </ul>
 </div>
 <div class="content">
@@ -649,6 +669,8 @@ cd serverless-workflow-hello-world</code></pre>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_apache-maven">
+<div class="openblock">
+<div class="content">
 <div class="listingblock">
 <div class="title">Run your workflow application using Apache Maven</div>
 <div class="content">
@@ -656,15 +678,34 @@ cd serverless-workflow-hello-world</code></pre>
 </div>
 </div>
 </div>
-<div class="tab-pane" aria-labelledby="tabset3_knative-cli">
-<div class="listingblock">
-<div class="title">Deploy your project to authenticated cluster</div>
+</div>
+<div class="paragraph">
+<p>Knative workflow CLI:</p>
+</div>
+<div class="openblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">kn workflow deploy</code></pre>
+<div class="paragraph">
+<p>Currently, Knative workflow CLI doesn&#8217;t support yet running workflows locally. You can either:</p>
+</div>
+<div class="listingblock">
+<div class="title">Run your workflow application using Apache Maven</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn clean quarkus:dev</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Run your workflow application using Quarkus CLI</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">quarkus dev</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For more information about Knative CLI, see <a href="../tooling/kn-plugin-workflow-overview.html" class="xref page">Serverless Workflow plug-in for Knative CLI</a>.</p>
+<p>For more information about Knative workflow CLI, see <a href="../tooling/kn-plugin-workflow-overview.html" class="xref page">Serverless Workflow plug-in for Knative CLI</a>.</p>
+</div>
+<div class="paragraph">
+<p>Also, to deploy and run your workflow application, see <a href="../cloud/deploying-on-minikube.html" class="xref page">Deploying workflow application on Minikube</a></p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -711,14 +752,14 @@ __  ____  __  _____   ___  __ ____  ______
 </li>
 <li>
 <p>Once your workflow application is started, you can send a request for the provided endpoint:</p>
-<div class="openblock">
-<div class="content">
 <div class="listingblock">
 <div class="title">Example request</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">curl -X POST -H 'Content-Type:application/json' http://localhost:8080/hello_world</code></pre>
 </div>
 </div>
+<div class="openblock">
+<div class="content">
 <div class="listingblock">
 <div class="title">Example response</div>
 <div class="content">
@@ -729,7 +770,7 @@ __  ____  __  _____   ___  __ ____  ______
 </div>
 </li>
 <li>
-<p>You can update your workflow with a new <code>mantra</code> value without restarting the application.</p>
+<p>When running in development mode (using Quarkus CLI or Apache Maven), you can update your workflow with a new <code>mantra</code> value without restarting the application.</p>
 <div class="openblock">
 <div class="content">
 <div class="listingblock">

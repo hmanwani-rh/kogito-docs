@@ -94,6 +94,9 @@
     <a class="nav-link" href="../core/configuration-properties.html">Configuration properties in Serverless Workflow</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../core/defining-an-input-schema-for-workflows.html">Defining an input schema for Serverless Workflow</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../core/custom-functions-support.html">Custom functions for your Serverless Workflow service</a>
   </li>
 </ul>
@@ -241,20 +244,23 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">Kogito Serverless Workflow Guides</span>
-    <span class="version">main</span>
+    <span class="version">snapshot</span>
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../index.html">Kogito Serverless Workflow Guides</a>
+      <a class="title" href="../../latest/index.html">Kogito Serverless Workflow Guides</a>
       <ul class="versions">
-        <li class="version is-current is-latest">
-          <a href="../index.html">main</a>
+        <li class="version is-current">
+          <a href="../index.html">snapshot</a>
         </li>
         <li class="version">
-          <a href="../../1.25.0.Final/index.html">1.25.0.Final</a>
+          <a href="../../1.26.0-SNAPSHOT/index.html">1.26-RC</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../latest/index.html">1.25</a>
         </li>
         <li class="version">
-          <a href="../../1.24.1.Final/index.html">1.24.1.Final</a>
+          <a href="../../1.24.1.Final/index.html">1.24</a>
         </li>
       </ul>
     </li>
@@ -266,7 +272,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../index.html" class="home-link"></a>
+  <a href="../../latest/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Kogito Serverless Workflow Guides</a></li>
@@ -275,11 +281,12 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">main</button>
+  <button class="version-menu-toggle" title="Show other versions of page">snapshot</button>
   <div class="version-menu">
-    <a class="version is-current" href="orchestration-of-grpc-services.html">main</a>
-    <a class="version" href="../../1.25.0.Final/service-orchestration/orchestration-of-grpc-services.html">1.25.0.Final</a>
-    <a class="version" href="../../1.24.1.Final/service-orchestration/orchestration-of-grpc-services.html">1.24.1.Final</a>
+    <a class="version is-current" href="orchestration-of-grpc-services.html">snapshot</a>
+    <a class="version" href="../../1.26.0-SNAPSHOT/service-orchestration/orchestration-of-grpc-services.html">1.26-RC</a>
+    <a class="version" href="../../latest/service-orchestration/orchestration-of-grpc-services.html">1.25</a>
+    <a class="version" href="../../1.24.1.Final/service-orchestration/orchestration-of-grpc-services.html">1.24</a>
   </div>
 </div>
   <div class="edit-this-page"><a href="https://github.com/kiegroup/kogito-docs/edit/main/serverlessworkflow/modules/ROOT/pages/service-orchestration/orchestration-of-grpc-services.adoc">Edit this Page</a></div>
@@ -495,6 +502,13 @@ quarkus.grpc.clients.Greeter.port=50051</code></pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_default_enum_values"><a class="anchor" href="#_default_enum_values"></a>Default enum values</h3>
+<div class="paragraph">
+<p>gRPC <a href="{grpc_enum_url}">specification</a> requires enumeration types to have a default value. The default value is not included in the server response payload. Therefore, use an empty value such as <code>UNKNOWN</code> as default.
+If, for any reason, your default value is semantically valid and you want the value to be included in the workflow model, you must set <code>kogito.grpc.enum.includeDefault</code> property to true. This way enumeration fields are always filled by the workflow if the server response does not include them.</p>
+</div>
+</div>
 <div class="sect1">
 <h2 id="running-serverless-workflow-application"><a class="anchor" href="#running-serverless-workflow-application"></a>Running the workflow application</h2>
 <div class="sectionbody">
@@ -578,7 +592,14 @@ quarkus.grpc.clients.Greeter.port=50051</code></pre>
 <div class="listingblock">
 <div class="title">Example response</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">{"id":"abece3f9-0797-4c10-a1f5-8f3929724689","workflowdata":{"helloRequests":[{"name":"Javierito","language":"Spanish"},{"name":"John","language":"English"},{"name":"Jan","language":"Czech"}],"message":"Saludos desde gRPC service Javierito\nHello from gRPC service John\nHello from gRPC service Jan"}}</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">{"workflowdata" : {
+                    "helloRequests" : [
+                                     {"name" : "Javierito", "language":"Spanish"},
+                                     {"name" : "John", "language":"English"},
+                                     {"name" : "Jan", "language":"Czech"}],
+                    "message":"Saludos desde gRPC service Javierito\nHello from gRPC service John\nHello from gRPC service Jan"
+                  }
+}</code></pre>
 </div>
 </div>
 </div>
@@ -598,7 +619,18 @@ quarkus.grpc.clients.Greeter.port=50051</code></pre>
 <div class="listingblock">
 <div class="title">Example response</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">{"id":"403876ed-0db4-40ca-a19c-158f563fef16","workflowdata":{"helloRequests":[{"name":"Javierito","language":"Spanish"},{"name":"John","language":"English"},{"name":"Jan","language":"Czech"}],"response":[{"message":"Saludos desde gRPC service Javierito"},{"message":"Hello from gRPC service John"},{"message":"Hello from gRPC service Jan"}]}}</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">{"workflowdata" : {
+                    "helloRequests" : [
+                                     {"name" : "Javierito", "language":"Spanish"},
+                                     {"name" : "John", "language":"English"},
+                                     {"name" : "Jan", "language":"Czech"}],
+                    "response":[
+                                {"message":"Saludos desde gRPC service Javierito"},
+                                {"message":"Hello from gRPC service John"},
+                                {"message":"Hello from gRPC service Jan"}
+                               ]
+                  }
+}</code></pre>
 </div>
 </div>
 </div>
